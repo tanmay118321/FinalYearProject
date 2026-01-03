@@ -27,7 +27,9 @@ public class Register extends AppCompatActivity {
         private FirebaseAuth mAuth;
         private FirebaseFirestore db;
 
-        @Override
+
+
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_register);
