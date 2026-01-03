@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7FBF7">
+    android:background="#F4FDF4">
 
     <!-- App Icon Container -->
     <androidx.cardview.widget.CardView
@@ -14,7 +14,7 @@
         app:cardCornerRadius="24dp"
         android:layout_marginTop="200dp"
         app:cardElevation="10dp"
-        app:cardBackgroundColor="@android:color/white"
+        app:cardBackgroundColor="#FFFFFF"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/appName"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@drawable/mess_logo"
             app:tint="#1F3B24" />
     </androidx.cardview.widget.CardView>
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MessMate"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="#111111"
         app:layout_constraintTop_toBottomOf="@id/iconCard"
@@ -49,31 +49,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Community Dining Simplified"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="#6B8E6B"
         app:layout_constraintTop_toBottomOf="@id/appName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="5dp"/>
 
     <!-- Progress Bar Background -->
-    <View
-        android:id="@+id/progressBg"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="220dp"
         android:layout_height="6dp"
-        android:background="#DDE8DD"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progress_drawable"
         app:layout_constraintTop_toBottomOf="@id/tagline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
-
-    <!-- Progress Indicator -->
-    <View
-        android:layout_width="90dp"
-        android:layout_height="6dp"
-        android:background="#2D4B32"
-        app:layout_constraintTop_toTopOf="@id/progressBg"
-        app:layout_constraintStart_toStartOf="@id/progressBg"/>
+        android:layout_marginTop="10dp"/>
 
     <!-- Version Text -->
     <TextView

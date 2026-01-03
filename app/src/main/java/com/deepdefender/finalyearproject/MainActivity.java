@@ -1,6 +1,8 @@
 package com.deepdefender.finalyearproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +15,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+
+        new Thread(() -> {
+            for (int i = 0; i <= 100; i++) {
+                int progress = i;
+                runOnUiThread(() -> progressBar.setProgress(progress));
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            startActivity(new Intent(this, Login.class));
+            finish();
+        }).start();
+
     }
 }

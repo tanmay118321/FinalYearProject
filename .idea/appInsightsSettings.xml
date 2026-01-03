@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.deepdefender.finalyearproject" />
+                  <option name="mobileSdkAppId" value="1:520571337944:android:d72e6f5f669bf75ea2abad" />
+                  <option name="projectId" value="mess-management-aa8b5" />
+                  <option name="projectNumber" value="520571337944" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
