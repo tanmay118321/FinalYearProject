@@ -76,8 +76,11 @@ public class Login extends AppCompatActivity {
 
                                     if ("admin".equals(role)) {
                                       //  startActivity(new Intent(this, AdminDashboardActivity.class));
+                                        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+
                                     } else {
                                       //  startActivity(new Intent(this, StudentDashboardActivity.class));
+                                        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
                                     }
                                     finish();
                                 });
@@ -85,7 +88,7 @@ public class Login extends AppCompatActivity {
                     .addOnFailureListener(e ->
 
                             Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show());
-                            startActivity(new Intent(this, Login.class));
+                            startActivity(new Intent(this, Register.class));
                             finish();
         }
     }
