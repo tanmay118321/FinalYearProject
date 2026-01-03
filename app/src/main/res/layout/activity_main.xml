@@ -11,8 +11,8 @@
     android:gravity="center">
 
    <ImageView
-       android:layout_width="220dp"
-       android:layout_height="220dp"
+       android:layout_width="225dp"
+       android:layout_height="225dp"
        android:src="@drawable/mess_logo"
        tools:ignore="MissingConstraints" />
 
