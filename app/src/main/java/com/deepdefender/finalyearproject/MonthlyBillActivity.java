@@ -1,80 +1,69 @@
 package com.deepdefender.finalyearproject;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.*;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MonthlyBillActivity extends AppCompatActivity {
 
-    TextView txtAmount, txtDueDate, txtMonth, txtStatus;
-    LinearLayout breakdownContainer, historyContainer;
-    ImageView btnBack;
-
-    DatabaseReference billRef;
+    private TextView txtMonth, txtAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly_bill);
 
-        txtAmount = findViewById(R.id.txtAmount);
-        txtDueDate = findViewById(R.id.txtDueDate);
         txtMonth = findViewById(R.id.txtMonth);
-        txtStatus = findViewById(R.id.txtStatus);
-        breakdownContainer = findViewById(R.id.breakdownContainer);
-        historyContainer = findViewById(R.id.historyContainer);
-        btnBack = findViewById(R.id.btnBack);
+        txtAmount = findViewById(R.id.txtAmount);
 
-        billRef = FirebaseDatabase.getInstance().getReference("monthly_bill");
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        btnBack.setOnClickListener(v -> finish());
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("monthlyBills")
+                .child(uid);
 
-        loadBill();
-    }
-
-    private void loadBill() {
-        billRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                txtAmount.setText("$" + snapshot.child("total").getValue());
-                txtDueDate.setText("Due " + snapshot.child("due_date").getValue());
-                txtMonth.setText(snapshot.child("month").getValue().toString());
-                txtStatus.setText(snapshot.child("status").getValue().toString());
-
-                breakdownContainer.removeAllViews();
-                for (DataSnapshot item : snapshot.child("breakdown").getChildren()) {
-                    addRow(breakdownContainer,
-                            item.child("title").getValue().toString(),
-                            item.child("amount").getValue().toString());
+                if (!snapshot.exists()) {
+                    Toast.makeText(MonthlyBillActivity.this,
+                            "No bill available",
+                            Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
-                historyContainer.removeAllViews();
-                for (DataSnapshot item : snapshot.child("history").getChildren()) {
-                    addRow(historyContainer,
-                            item.child("month").getValue().toString(),
-                            "$" + item.child("amount").getValue().toString());
+                // SAFE READS
+                String month = snapshot.child("month").getValue(String.class);
+                String amount = snapshot.child("amount").getValue(String.class);
+
+                if (month == null || amount == null) {
+                    Toast.makeText(MonthlyBillActivity.this,
+                            "Bill data incomplete",
+                            Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                txtMonth.setText(month);
+                txtAmount.setText("₹ " + amount);
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MonthlyBillActivity.this,
+                        "Failed to load bill",
+                        Toast.LENGTH_SHORT).show();
+            }
         });
-    }
-
-    private void addRow(LinearLayout parent, String title, String amount) {
-        LinearLayout row = (LinearLayout) LayoutInflater.from(this)
-                .inflate(android.R.layout.simple_list_item_2, parent, false);
-
-        ((TextView) row.findViewById(android.R.id.text1)).setText(title);
-        ((TextView) row.findViewById(android.R.id.text2)).setText(amount);
-
-        parent.addView(row);
     }
 }

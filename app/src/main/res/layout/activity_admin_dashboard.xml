@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F8FAF9">
 
-    <!-- ================= TOP BAR ================= -->
+    <!-- TOP BAR -->
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
@@ -28,9 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- ================= SCROLL AREA ================= -->
+    <!-- SCROLL VIEW -->
     <ScrollView
-        android:id="@+id/scrollAdmin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -43,7 +42,7 @@
             android:orientation="vertical"
             android:paddingBottom="24dp">
 
-            <!-- ================= PROFILE ================= -->
+            <!-- PROFILE -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,15 +64,15 @@
                     android:layout_marginStart="16dp">
 
                     <TextView
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Welcome back,"
                         android:textColor="#6E8F6E"
                         android:textSize="14sp"/>
 
                     <TextView
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Admin Manager"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -81,30 +80,31 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- ================= QUICK ACTIONS ================= -->
+            <!-- QUICK ACTIONS -->
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Quick Actions"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#000"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginStart="16dp"/>
 
+            <!-- GRID -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
-                android:padding="12dp">
+                android:layout_margin="20dp">
 
-                <!-- Manage Students -->
+                <!-- MANAGE STUDENTS -->
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                    android:id="@+id/cardManageStudents"
+                    android:layout_width="150dp"
                     android:layout_height="160dp"
                     android:layout_margin="8dp"
-                    app:layout_columnWeight="1"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -118,21 +118,22 @@
                             android:src="@drawable/avatar_placeholder"/>
 
                         <TextView
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Manage Students"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Update Menu -->
+                <!-- UPDATE MENU -->
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                    android:id="@+id/cardUpdateMenu"
+                    android:layout_width="150dp"
                     android:layout_height="160dp"
                     android:layout_margin="8dp"
-                    app:layout_columnWeight="1"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -146,21 +147,22 @@
                             android:src="@drawable/ic_menu"/>
 
                         <TextView
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Update Menu"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Attendance Reports -->
+                <!-- ATTENDANCE -->
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                    android:id="@+id/cardAttendance"
+                    android:layout_width="150dp"
                     android:layout_height="160dp"
                     android:layout_margin="8dp"
-                    app:layout_columnWeight="1"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -174,21 +176,22 @@
                             android:src="@drawable/ic_complaint_blue"/>
 
                         <TextView
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Attendance Reports"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Generate Bills -->
+                <!-- GENERATE BILLS -->
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                    android:id="@+id/cardGenerateBills"
+                    android:layout_width="150dp"
                     android:layout_height="160dp"
                     android:layout_margin="8dp"
-                    app:layout_columnWeight="1"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -202,8 +205,36 @@
                             android:src="@drawable/ic_bill_orange"/>
 
                         <TextView
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Generate Bills"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardComplaint"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_complaint_blue"
+                            android:backgroundTint="@color/white"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="Generate Bills"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"/>
@@ -211,7 +242,6 @@
                 </androidx.cardview.widget.CardView>
 
             </GridLayout>
-
         </LinearLayout>
     </ScrollView>
 

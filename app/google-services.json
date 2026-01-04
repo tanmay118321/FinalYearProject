@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "520571337944",
+    "project_id": "mess-management-aa8b5",
+    "storage_bucket": "mess-management-aa8b5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520571337944:android:d72e6f5f669bf75ea2abad",
+        "android_client_info": {
+          "package_name": "com.deepdefender.finalyearproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr8YV9vNPfzHGQ8F1UbqD2ivP0ZQweULo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
