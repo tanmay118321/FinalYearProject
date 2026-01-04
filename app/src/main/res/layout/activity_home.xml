@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:weightSum="100">
-
+    android:fitsSystemWindows="true"
+    tools:context=".HomeActivity">
     <FrameLayout
-        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="90" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/maincontent">
+        <FrameLayout
+            android:id="@+id/homescreen"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            tools:ignore="MissingConstraints,Suspicious0dp"
+            />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:id="@+id/homenav"
+            android:layout_gravity="bottom"
+            android:background="#FFFFFF"
+            app:menu="@menu/bottom_menu"
+            app:itemIconTint="#254422"
+            app:itemRippleColor="#00FAF7F7"
+            tools:ignore="MissingConstraints,VisualLintBottomNav" />
+    </FrameLayout>
 
-<com.google.android.material.bottomnavigation.BottomNavigationView        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/white"
-        android:layout_weight="10"
-       app:menu="@menu/bottom_menu" />
 
-</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
