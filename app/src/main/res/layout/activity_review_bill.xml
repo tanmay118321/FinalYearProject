@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F9F6">
+    android:background="#F0F8EB">
 
     <!-- Back -->
     <ImageView
@@ -54,6 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:background="#DFEAFB"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -80,14 +81,7 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="DRAFT"
-                        android:textStyle="bold"
-                        android:textColor="#9A6B00"
-                        android:background="@drawable/bg_chip"
-                        android:padding="10dp"/>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -166,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_input"
                 android:padding="26dp"
+                android:backgroundTint="#FAE6E6"
                 android:orientation="vertical"
                 android:layout_marginBottom="16dp">
 
@@ -200,8 +195,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="3dp"
+                android:layout_margin="10dp"
                 android:layout_marginBottom="12dp">
 
                 <LinearLayout
@@ -237,6 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="₹15,000"
+                        android:textColor="@color/red"
                         android:textStyle="bold"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -245,8 +242,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="3dp"
+                android:layout_margin="10dp"
                 android:layout_marginBottom="12dp">
 
                 <LinearLayout
@@ -282,6 +280,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="₹8,000"
+                        android:textColor="@color/red"
                         android:textStyle="bold"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -290,8 +289,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp"
+                android:layout_margin="10dp">
 
                 <LinearLayout
                     android:layout_height="wrap_content"
@@ -326,6 +326,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="₹3,000"
+                        android:textColor="@color/red"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -338,7 +339,7 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#FFFFFF"
+        android:background="#D7F8D0"
         android:padding="12dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
