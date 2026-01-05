@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.deepdefender.finalyearproject.Fragment.Profile;
 import com.deepdefender.finalyearproject.Fragment.StudentDashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,6 +31,8 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    //rofileActivity profileActivity = new ProfileActivity();
+    //Profile profile = new Profile();
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -37,6 +40,10 @@ public class HomeActivity extends AppCompatActivity
 
         if (item.getItemId() == R.id.nav_home) {
             fragment = new StudentDashboardFragment();
+        }
+        else if(item.getItemId() == R.id.nav_profile)
+        {
+            fragment = new Profile();
         }
         // Future fragments can be added here
         // else if (item.getItemId() == R.id.nav_menu) { ... }
