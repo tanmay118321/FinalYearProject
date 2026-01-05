@@ -2,65 +2,75 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B8EAD1"
     android:fillViewport="true"
     android:layout_marginBottom="100dp">
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#F8FAF9">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="2dp"
-        android:src="@drawable/avatar_placeholder"
-        app:layout_constraintStart_toStartOf="parent"
+    <LinearLayout
+        android:id="@+id/profilelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_input"
+        android:weightSum="100"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/txtWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="Welcome back,"
-        android:textColor="#888888"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@id/imgProfile"
-        app:layout_constraintTop_toTopOf="@id/imgProfile" />
+    <com.google.android.material.imageview.ShapeableImageView
+           android:id="@+id/imgProfile"
+           android:layout_width="0dp"
+           android:layout_height="50dp"
+           android:padding="2dp"
+           android:layout_weight="20"
+           android:src="@drawable/avatar_placeholder"/>
+      <LinearLayout
+          android:layout_width="0dp"
+          android:layout_weight="60"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+          <TextView
+              android:id="@+id/txtWelcome"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Welcome back,"
+              android:textColor="#888888"
+              android:textSize="14sp"/>
+          <TextView
+              android:id="@+id/txtUser"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Alex Johnson"
+              android:textColor="#000000"
+              android:textSize="18sp"
+              android:textStyle="bold"
+           />
+      </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Alex Johnson"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/txtWelcome"
-        app:layout_constraintTop_toBottomOf="@id/txtWelcome" />
+       <ImageButton
+           android:id="@+id/btnNotification"
+           android:layout_width="0dp"
+           android:layout_height="40dp"
+           android:layout_gravity="end"
+           android:layout_weight="20"
+           android:background="?attr/selectableItemBackgroundBorderless"
+           android:src="@drawable/ic_notification_dot"
+           app:layout_constraintBottom_toBottomOf="@id/imgProfile"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="@id/imgProfile"
+           tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageButton
-        android:id="@+id/btnNotification"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_notification_dot"
-        app:layout_constraintBottom_toBottomOf="@id/imgProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imgProfile"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
+   </LinearLayout>
     <TextView
         android:id="@+id/txtMenuTitle"
         android:layout_width="wrap_content"
@@ -72,7 +82,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgProfile" />
+        app:layout_constraintTop_toBottomOf="@id/profilelayout" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,6 +106,7 @@
         app:layout_constraintTop_toBottomOf="@id/txtMenuTitle">
 
         <TextView
+            android:id="@+id/tabBreakfast"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -104,17 +115,17 @@
             android:textColor="#777" />
 
         <TextView
+            android:id="@+id/tabLunch"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_input"
-            android:elevation="2dp"
             android:gravity="center"
             android:text="Lunch"
-            android:textColor="#000"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#000" />
 
         <TextView
+            android:id="@+id/tabDinner"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -122,6 +133,7 @@
             android:text="Dinner"
             android:textColor="#777" />
     </LinearLayout>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/menuCard"
@@ -145,8 +157,8 @@
 
                 <ImageView
                     android:layout_gravity="center"
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/mess_logo" />
 
@@ -213,27 +225,28 @@
                 android:layout_marginHorizontal="16dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#29422F"
-                    android:text="Like"
-                    android:textAllCaps="false"
-                    app:icon="@drawable/ic_thumb_up" />
+
 
                 <Button
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
+                    android:id="@+id/btnLike"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nutrition Info"
-                    android:textAllCaps="false"
-                    android:textColor="#000" />
+                    android:text="⭐ Like"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/green"
+                    android:layout_marginStart="16dp"/>
+
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <View
+        android:id="@+id/billBadge"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_gravity="end"
+        android:background="@drawable/bg_category_selected"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/txtQuickActions"
