@@ -50,7 +50,6 @@ public class StudentDashboardFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState) {
 
-        btnLogout.setOnClickListener(v -> showLogoutDialog());
 
         View view = inflater.inflate(
                 R.layout.fragment_student_dashboard,
@@ -122,6 +121,8 @@ public class StudentDashboardFragment extends Fragment {
         cardSubmitComplaint.setOnClickListener(v ->
                 startActivity(new Intent(getActivity(),
                         ComplaintActivity.class)));
+
+        btnLogout.setOnClickListener(v -> showLogoutDialog()); // ✅ CORRECT PLACE
 
         btnLogout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
