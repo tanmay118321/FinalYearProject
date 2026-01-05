@@ -1,5 +1,6 @@
 package com.deepdefender.finalyearproject;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +14,12 @@ import java.util.HashMap;
 public class ComplaintActivity extends AppCompatActivity {
 
     EditText subject, details;
-    AppCompatButton submit, food, hygiene, staff, maintenance;
+   Button submit;
     String selectedCategory = "Food Quality";
 
     DatabaseReference ref;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +29,11 @@ public class ComplaintActivity extends AppCompatActivity {
         details = findViewById(R.id.edtDetails);
         submit = findViewById(R.id.btnSubmit);
 
-        food = findViewById(R.id.btnFood);
-        hygiene = findViewById(R.id.btnHygiene);
-        staff = findViewById(R.id.btnStaff);
-        maintenance = findViewById(R.id.btnMaintenance);
+
 
         ref = FirebaseDatabase.getInstance().getReference("complaints");
 
-        food.setOnClickListener(v -> selectedCategory = "Food Quality");
-        hygiene.setOnClickListener(v -> selectedCategory = "Hygiene");
-        staff.setOnClickListener(v -> selectedCategory = "Staff Behavior");
-        maintenance.setOnClickListener(v -> selectedCategory = "Maintenance");
+
 
         submit.setOnClickListener(v -> submitComplaint());
     }
