@@ -223,7 +223,7 @@
                     android:text="⭐ Like"
                     android:layout_gravity="end"
                     android:backgroundTint="#00A5FF"
-                    android:layout_marginStart="1dp"/>
+                    android:layout_marginStart="250dp"/>
 
             </LinearLayout>
         </LinearLayout>
