@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F8F7">
+    android:background="#EFF2F6">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -95,7 +95,7 @@
                     android:layout_height="56dp"
                     android:text="PAY NOW"
                     android:textStyle="bold"
-                    android:backgroundTint="#21E40C"/>
+                    android:backgroundTint="#0C98E4"/>
 
                 <Button
                     android:id="@+id/btnDownloadInvoice"
@@ -103,7 +103,7 @@
                     android:layout_height="56dp"
                     android:text="Download Invoice"
                     android:layout_marginTop="8dp"
-                    android:backgroundTint="#1DB954"
+                    android:backgroundTint="#FDA6A6"
                     android:textColor="#FFF"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4FDF4">
+    android:background="#F4F8FD">
 
     <!-- App Icon Container -->
     <androidx.cardview.widget.CardView
@@ -14,7 +14,7 @@
         app:cardCornerRadius="24dp"
         android:layout_marginTop="200dp"
         app:cardElevation="10dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="#6AB9FF"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/appName"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
             android:layout_gravity="center"
             android:scaleType="fitCenter"
             android:src="@drawable/mess_logo"
-            app:tint="#1F3B24" />
+            app:tint="#FFFFFF" />
     </androidx.cardview.widget.CardView>
 
     <!-- App Name -->
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:text="Community Dining Simplified"
         android:textSize="14sp"
-        android:textColor="#6B8E6B"
+        android:textColor="#6B7E8E"
         app:layout_constraintTop_toBottomOf="@id/appName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

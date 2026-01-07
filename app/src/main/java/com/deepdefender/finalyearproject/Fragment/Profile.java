@@ -46,9 +46,7 @@ public class Profile extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        imgProfile = view.findViewById(R.id.imgProfile);
 
-        imgProfile.setOnClickListener(v -> openGallery());
 
         return view;
     }

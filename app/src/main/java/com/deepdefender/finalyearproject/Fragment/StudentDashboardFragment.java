@@ -1,11 +1,15 @@
 package com.deepdefender.finalyearproject.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,7 +20,9 @@ import androidx.fragment.app.Fragment;
 import com.deepdefender.finalyearproject.ComplaintActivity;
 import com.deepdefender.finalyearproject.Login;
 import com.deepdefender.finalyearproject.MonthlyBillActivity;
+import com.deepdefender.finalyearproject.ProfileImageManager;
 import com.deepdefender.finalyearproject.R;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -32,7 +38,10 @@ public class StudentDashboardFragment extends Fragment {
     private CardView cardMonthlyBill, cardSubmitComplaint;
     private TextView txtBillDue;
 
+    private ShapeableImageView imgProfile;
+
     // Logout
+
     private Button btnLogout;
 
     // Firebase
@@ -56,6 +65,8 @@ public class StudentDashboardFragment extends Fragment {
                 container,
                 false
         );
+        imgProfile = view.findViewById(R.id.imgProfile);
+
 
         bindViews(view);
         initFirebase();
@@ -63,6 +74,7 @@ public class StudentDashboardFragment extends Fragment {
         setupClicks();
 
         loadMenu(selectedMeal);
+        view.post(this::loadProfileImage);
 
         return view;
     }
@@ -272,6 +284,22 @@ public class StudentDashboardFragment extends Fragment {
         txtMenuDesc = null;
         txtMenuTime = null;
         txtBillDue = null;
+    }
+    private void loadProfileImage() {
+
+        if (!isAdded()) return;
+
+        String path = requireContext()
+                .getSharedPreferences("profile", Context.MODE_PRIVATE)
+                .getString("profile_image_path", null);
+
+        if (path != null && new java.io.File(path).exists()) {
+            imgProfile.setImageBitmap(
+                    BitmapFactory.decodeFile(path)
+            );
+        } else {
+            imgProfile.setImageResource(R.drawable.avatar_placeholder);
+        }
     }
 
 

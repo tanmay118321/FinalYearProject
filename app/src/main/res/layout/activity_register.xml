@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7FBF7">
+    android:background="#ECF3FB">
 
     <!-- Back Button -->
     <ImageView
@@ -20,14 +20,14 @@
     <!-- App Logo -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/mess_logo"
-        app:tint="#1F3B24"
         app:layout_constraintTop_toBottomOf="@id/btnBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        app:tint="#003357" />
 
     <!-- Title -->
     <TextView
@@ -152,7 +152,7 @@
                     android:layout_height="50dp"
                     android:text="Register"
                     android:textColor="@android:color/white"
-                    android:backgroundTint="#2D4B32"
+                    android:backgroundTint="#0090FF"
                     android:layout_marginTop="24dp"/>
 
                 <!-- Login Redirect -->

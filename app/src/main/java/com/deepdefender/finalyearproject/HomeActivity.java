@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.deepdefender.finalyearproject.Fragment.Profile;
+import com.deepdefender.finalyearproject.Fragment.ProfileFragment;
 import com.deepdefender.finalyearproject.Fragment.StudentDashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -43,7 +44,7 @@ public class HomeActivity extends AppCompatActivity
         }
         else if(item.getItemId() == R.id.nav_profile)
         {
-            fragment = new Profile();
+            fragment = new ProfileFragment();
         }
         // Future fragments can be added here
         // else if (item.getItemId() == R.id.nav_menu) { ... }
