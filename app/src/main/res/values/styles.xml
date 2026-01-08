@@ -23,5 +23,20 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+    <style name="BottomItem">
+        <!-- Background selector -->
+        <item name="android:background">@drawable/bg_bottom_item</item>
+
+        <!-- Icon tint -->
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+
+        <!-- Text color -->
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+
+        <!-- Spacing & size -->
+        <item name="itemIconSize">24dp</item>
+        <item name="itemHorizontalTranslationEnabled">false</item>
+    </style>
+
 
 </resources>

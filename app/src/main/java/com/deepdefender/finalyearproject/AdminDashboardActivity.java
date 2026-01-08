@@ -16,7 +16,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
-    CardView cardcomplaint,cardgeneratebills,cardupdatemenu;
+    CardView cardcomplaint,cardgeneratebills,cardupdatemenu,cardmanagestudent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,14 @@ public class AdminDashboardActivity extends AppCompatActivity {
         cardcomplaint=findViewById(R.id.cardComplaint);
         cardgeneratebills=findViewById(R.id.cardGenerateBills);
         cardupdatemenu=findViewById(R.id.cardUpdateMenu);
+        cardmanagestudent=findViewById(R.id.cardManageStudents);
+        cardmanagestudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(AdminDashboardActivity.this, AdminSideManageStudent.class);
+                startActivity(intent);
+            }
+        });
 
         cardupdatemenu.setOnClickListener(new View.OnClickListener() {
             @Override
