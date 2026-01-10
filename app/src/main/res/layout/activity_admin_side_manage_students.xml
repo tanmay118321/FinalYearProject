@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAF7F3"
+    tools:ignore="ExtraText">
+
+    <!-- ================= TOP BAR ================= -->
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/txtTitle" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage Students"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#1C1C1C"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"/>
+
+    <!-- ================= SEARCH BAR ================= -->
+
+
+        <EditText
+            android:layout_margin="10dp"
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp"
+            android:hint="Search by Name or Roll No..."
+            android:textSize="15sp"
+            android:background="@drawable/bg_input"
+            app:layout_constraintTop_toBottomOf="@id/txtTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+    <!-- ================= FILTER CHIPS ================= -->
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingStart="16dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/etSearch">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All"
+                  />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Active"
+                   />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Due"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipInactive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inactive"
+                    />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- ================= LIST ================= -->
+
+    <TextView
+        android:layout_marginTop="70dp"
+        android:id="@+id/txtRecentlyAdded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RECENTLY ADDED"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:textColor="#8B7A6A"
+        app:layout_constraintTop_toBottomOf="@id/etSearch"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- ================= FOOTER ================= -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerStudents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/txtFooter"
+        app:layout_constraintTop_toBottomOf="@id/txtRecentlyAdded"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/item_student" />
+
+    <TextView
+        android:id="@+id/txtFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Showing 5 of 142 students"
+        android:textColor="#8B7A6A"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- ================= FLOATING ADD BUTTON ================= -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="#F7931E"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

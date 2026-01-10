@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F8F5"
@@ -10,98 +9,88 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="20dp">
 
-        <!-- ================= TOP BAR ================= -->
-
+        <!-- TITLE -->
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profile"
-            android:textColor="#000"
-            android:textSize="23sp"
+            android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="#0F172A"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- ================= PROFILE IMAGE ================= -->
-
+        <!-- EDIT -->
         <TextView
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/bg_input"
-            android:padding="15dp"
             android:text="Edit"
-            android:textColor="#2E7D32"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/profileImageContainer"
+        <!-- PROFILE IMAGE -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgProfile"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginTop="32dp"
-            app:cardCornerRadius="100dp"
+            android:layout_marginTop="28dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar_placeholder"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
             app:layout_constraintTop_toBottomOf="@id/txtTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/avatar_placeholder"
-                android:scaleType="centerCrop"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- ================= NAME & STATUS ================= -->
+        <!-- NAME -->
         <TextView
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alex Johnson"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="#0F172A"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/profileImageContainer"
+            app:layout_constraintTop_toBottomOf="@id/imgProfile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- STUDENT ID -->
         <TextView
             android:id="@+id/txtStudentId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student ID: 2024001"
             android:textColor="#64748B"
             android:layout_marginTop="4dp"
             app:layout_constraintTop_toBottomOf="@id/txtName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- STATUS -->
         <TextView
             android:id="@+id/txtMessActive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="✔  MESS ACTIVE"
+            android:text="✔ MESS ACTIVE"
+            android:textStyle="bold"
             android:textColor="#1B5E20"
             android:background="@drawable/bg_status_green"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="18dp"
             android:paddingVertical="6dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="14dp"
             app:layout_constraintTop_toBottomOf="@id/txtStudentId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- ================= ACCOMMODATION ================= -->
+        <!-- SECTION: ACCOMMODATION -->
         <TextView
             android:id="@+id/txtAccommodation"
             android:layout_width="wrap_content"
@@ -118,69 +107,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="14dp"
             app:cardElevation="1dp"
             app:layout_constraintTop_toBottomOf="@id/txtAccommodation">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="184dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hostel Name"
-                    android:textColor="#64748B" />
+                    android:layout_width="wrap_content"
+                    android:text="Hostel" android:textColor="#64748B"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/txtHostel" android:textStyle="bold"/>
+
+                <View android:layout_height="12dp" android:layout_width="match_parent"/>
 
                 <TextView
-                    android:id="@+id/txtHostel"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Greenwood Hall"
-                    android:textColor="#000"
-                    android:textStyle="bold" />
+                    android:layout_width="wrap_content"
+                    android:text="Block" android:textColor="#64748B"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/txtBlock" android:textStyle="bold"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="12dp" />
+                <View android:layout_height="12dp" android:layout_width="match_parent"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Block"
-                    android:textColor="#64748B" />
-
+                    android:layout_width="wrap_content"
+                    android:text="Room" android:textColor="#64748B"/>
                 <TextView
-                    android:id="@+id/txtBlock"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="B"
-                    android:textColor="#000"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="12dp" />
-
-                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Room Number"
-                    android:textColor="#64748B" />
-
-                <TextView
-                    android:id="@+id/txtRoom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="304"
-                    android:textColor="#000"
-                    android:textStyle="bold" />
+                    android:id="@+id/txtRoom" android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ================= CONTACT ================= -->
+        <!-- CONTACT -->
         <TextView
             android:id="@+id/txtContact"
             android:layout_width="wrap_content"
@@ -197,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="14dp"
             app:cardElevation="1dp"
             app:layout_constraintTop_toBottomOf="@id/txtContact">
 
@@ -210,44 +180,33 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Email"
-                    android:textColor="#64748B" />
-
+                    android:text="Email" android:textColor="#64748B"/>
                 <TextView
-                    android:id="@+id/txtEmail"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="example@email.com"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-
+                    android:layout_width="wrap_content"
+                    android:id="@+id/txtEmail"/>
 
                 <View android:layout_height="12dp" android:layout_width="match_parent"/>
 
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Phone"
-                    android:textColor="#64748B" />
-
+                    android:text="Phone" android:textColor="#64748B"/>
                 <TextView
-                    android:id="@+id/txtPhone"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="+91 98765 43210"
-                    android:textStyle="bold"
-                    android:textColor="#000" />
+                    android:id="@+id/txtPhone" android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ================= LOGOUT ================= -->
-        <Button
+        <!-- LOGOUT -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="Log Out"
-            android:textColor="#FAFAFA"
             android:textStyle="bold"
+            android:textColor="@android:color/white"
             android:backgroundTint="@color/red"
             android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@id/cardContact" />
