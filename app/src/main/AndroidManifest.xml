@@ -17,6 +17,12 @@
         android:theme="@style/Theme.FinalYearProject"
         tools:targetApi="31">
         <activity
+            android:name=".AdminMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Message_Activity"
+            android:exported="false" />
+        <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity

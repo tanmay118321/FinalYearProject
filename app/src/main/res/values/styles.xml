@@ -23,5 +23,17 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+    <style name="DayNormal">
+        <item name="android:padding">6dp</item>
+        <item name="android:textColor">#666666</item>
+    </style>
+
+    <style name="DaySelected">
+        <item name="android:padding">6dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#03A9F4</item>
+    </style>
+
+
 
 </resources>

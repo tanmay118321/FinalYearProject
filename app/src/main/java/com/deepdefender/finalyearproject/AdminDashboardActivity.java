@@ -3,20 +3,20 @@ package com.deepdefender.finalyearproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
+import com.deepdefender.finalyearproject.Fragment.AdminMessageFragment;
+import com.deepdefender.finalyearproject.Fragment.MessageAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
-    CardView cardcomplaint,cardgeneratebills,cardupdatemenu;
+    CardView cardcomplaint,cardgeneratebills,cardupdatemenu,cardUpdateMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
         cardcomplaint=findViewById(R.id.cardComplaint);
         cardgeneratebills=findViewById(R.id.cardGenerateBills);
         cardupdatemenu=findViewById(R.id.cardUpdateMenu);
+        cardUpdateMenu = findViewById(R.id.cardUpdateMenu);
+
+        Button anncouncement = findViewById(R.id.anncouncement);
 
         cardupdatemenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,25 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
             }
         });
+        cardUpdateMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdminDashboardActivity.this,AdminMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        anncouncement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(AdminDashboardActivity.this,Message_Activity.class);
+                startActivity(intent);
+                //openFragment(new AdminMessageFragment());
+            }
+        });
+
+
         FirebaseMessaging.getInstance().getToken()
                 .addOnSuccessListener(token -> {
                     FirebaseDatabase.getInstance()
@@ -57,5 +79,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }

@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import com.deepdefender.finalyearproject.Fragment.Profile;
 import com.deepdefender.finalyearproject.Fragment.ProfileFragment;
 import com.deepdefender.finalyearproject.Fragment.StudentDashboardFragment;
+import com.deepdefender.finalyearproject.Fragment.UserMessageFragment;
+import com.deepdefender.finalyearproject.Fragment.UserMenuFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity
@@ -46,8 +48,16 @@ public class HomeActivity extends AppCompatActivity
         {
             fragment = new ProfileFragment();
         }
+        else if (item.getItemId() == R.id.nav_menu)
+        {
+            fragment = new UserMessageFragment();
+        }
+        else if(item.getItemId() == R.id.nav_food_menu)
+        {
+            fragment = new UserMenuFragment();
+        }
         // Future fragments can be added here
-        // else if (item.getItemId() == R.id.nav_menu) { ... }
+        // else if (item.getItemId() == R.id.nav_menu) { ... }nav_food_menu
 
         if (fragment != null) {
             loadFragment(fragment);
