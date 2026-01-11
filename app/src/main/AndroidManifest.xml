@@ -20,6 +20,12 @@
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".AdminSideManageStudent"
+            android:exported="false" />
+        <activity
+            android:name=".Message_Activity"
+            android:exported="false" />
+        <activity
             android:name=".AdminSideUpdateMenu"
             android:exported="false" />
         <activity
