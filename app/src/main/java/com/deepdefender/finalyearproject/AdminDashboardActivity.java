@@ -28,7 +28,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         cardupdatemenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(AdminDashboardActivity.this,AdminSideUpdateMenu.class);
+                Intent intent=new Intent(AdminDashboardActivity.this,AdminMenuActivity.class);
                 startActivity(intent);
             }
         });

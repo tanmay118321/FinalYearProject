@@ -22,6 +22,9 @@
         <activity
             android:name=".AdminSideUpdateMenu"
             android:exported="false" />
+        <activity
+            android:name=".AdminMenuActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
