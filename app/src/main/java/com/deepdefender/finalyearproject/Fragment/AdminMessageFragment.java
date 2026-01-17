@@ -48,16 +48,22 @@ public class AdminMessageFragment extends Fragment {
     }
 
     private void sendMsg() {
+
         String txt = input.getText().toString().trim();
         if (txt.isEmpty()) return;
 
         String id = ref.push().getKey();
-        ref.child(id).setValue(
-                new MessageModel(txt, "Admin", System.currentTimeMillis())
+
+        MessageModel model = new MessageModel(
+                txt,
+                "Mess Committee",   // 👈 committee name
+                System.currentTimeMillis()
         );
 
+        ref.child(id).setValue(model);
         input.setText("");
     }
+
 
     private void loadMessages() {
         ref.addValueEventListener(new ValueEventListener() {

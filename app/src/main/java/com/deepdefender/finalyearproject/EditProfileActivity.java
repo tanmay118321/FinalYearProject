@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,36 +16,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    // UI
     private EditText etName, etEmail, etPhone, etHostel, etBlock, etRoom;
     private MaterialButton btnSave;
     private TextView btnCancel, btnDiscard, btnSaveTop;
     private ImageView imgProfile, btnChangePhoto;
 
-    // Firebase
     private DatabaseReference userRef;
-    private String uid;
 
-    // ================= IMAGE PICKER =================
     private final ActivityResultLauncher<String> imagePicker =
             registerForActivityResult(
                     new ActivityResultContracts.GetContent(),
                     uri -> {
-                        if (uri == null) return;
-                        saveImageToInternalStorage(uri);
-                    }
-            );
+                        if (uri != null) {
+                            uploadImageAsBase64(uri);
+                        }
+                    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +51,10 @@ public class EditProfileActivity extends AppCompatActivity {
         bindViews();
         initFirebase();
         loadProfile();
-        loadSavedImage();
         setupActions();
     }
 
-    // ================= VIEW BINDING =================
     private void bindViews() {
-
         etName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
         etPhone = findViewById(R.id.etPhone);
@@ -77,78 +71,62 @@ public class EditProfileActivity extends AppCompatActivity {
         btnChangePhoto = findViewById(R.id.btnChangePhoto);
     }
 
-    // ================= FIREBASE =================
     private void initFirebase() {
-        uid = FirebaseAuth.getInstance().getUid();
+        String uid = FirebaseAuth.getInstance().getUid();
         userRef = FirebaseDatabase.getInstance()
                 .getReference("users")
                 .child(uid);
     }
 
     private void loadProfile() {
-        userRef.get().addOnSuccessListener(snapshot -> {
-            if (!snapshot.exists()) return;
+        userRef.get().addOnSuccessListener(s -> {
+            if (!s.exists()) return;
 
-            etName.setText(snapshot.child("name").getValue(String.class));
-            etEmail.setText(snapshot.child("email").getValue(String.class));
-            etPhone.setText(snapshot.child("phone").getValue(String.class));
-            etHostel.setText(snapshot.child("hostel").getValue(String.class));
-            etBlock.setText(snapshot.child("block").getValue(String.class));
-            etRoom.setText(snapshot.child("room").getValue(String.class));
+            etName.setText(s.child("name").getValue(String.class));
+            etPhone.setText(s.child("phone").getValue(String.class));
+            etHostel.setText(s.child("hostel").getValue(String.class));
+            etBlock.setText(s.child("block").getValue(String.class));
+            etRoom.setText(s.child("room").getValue(String.class));
         });
-    }
-
-    // ================= IMAGE =================
-    private void loadSavedImage() {
-
-        String path = getSharedPreferences("profile", MODE_PRIVATE)
-                .getString("profile_image_path", null);
-
-        if (path != null) {
-            imgProfile.setImageBitmap(
-                    BitmapFactory.decodeFile(path)
-            );
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null && user.getEmail() != null) {
+            etEmail.setText(user.getEmail());
         } else {
-            imgProfile.setImageResource(R.drawable.avatar_placeholder);
+            etEmail.setText("Not Available");
         }
     }
 
-    private void saveImageToInternalStorage(Uri uri) {
+    // 🔥 BASE64 IMAGE UPLOAD
+    private void uploadImageAsBase64(Uri uri) {
         try {
-            InputStream inputStream = getContentResolver().openInputStream(uri);
-            File file = new File(getFilesDir(), "profile.jpg");
+            InputStream is = getContentResolver().openInputStream(uri);
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
 
-            FileOutputStream outputStream = new FileOutputStream(file);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+            bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
 
-            outputStream.close();
-            inputStream.close();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 60, baos);
 
-            getSharedPreferences("profile", MODE_PRIVATE)
-                    .edit()
-                    .putString("profile_image_path", file.getAbsolutePath())
-                    .apply();
+            String base64Image =
+                    Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
 
-            imgProfile.setImageBitmap(bitmap);
+            Bitmap finalBitmap = bitmap;
+            userRef.child("profileImageBase64").setValue(base64Image)
+                    .addOnSuccessListener(v -> imgProfile.setImageBitmap(finalBitmap));
+
+            is.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(this,
-                    "Failed to load image",
+                    "Image upload failed",
                     Toast.LENGTH_SHORT).show();
         }
     }
 
-    // ================= ACTIONS =================
     private void setupActions() {
-
-        btnChangePhoto.setOnClickListener(v ->
-                imagePicker.launch("image/*"));
-
+        btnChangePhoto.setOnClickListener(v -> imagePicker.launch("image/*"));
         btnCancel.setOnClickListener(v -> finish());
         btnDiscard.setOnClickListener(v -> finish());
-
         btnSave.setOnClickListener(v -> saveProfile());
         btnSaveTop.setOnClickListener(v -> saveProfile());
     }
@@ -156,9 +134,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private void saveProfile() {
 
         if (etName.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this,
-                    "Name is required",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Name is required", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -178,7 +154,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e ->
                         Toast.makeText(this,
-                                "Failed to update profile",
+                                "Update failed",
                                 Toast.LENGTH_SHORT).show());
     }
 }

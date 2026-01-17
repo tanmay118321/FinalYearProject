@@ -4,36 +4,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F4F6FA">
 
     <!-- ================= HEADER ================= -->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#CCE2F3"
-        android:paddingVertical="12dp"
-        android:elevation="4dp"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="COMMITTEE"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#1F2A44"
-            android:textAlignment="center"/>
-    </LinearLayout>
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:background="#E3F2FD">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Committee Announcements"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Official updates and notices"
+                android:textSize="12sp"
+                android:textColor="#455A64"
+                android:textAlignment="center"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <!-- ================= CHAT LIST ================= -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="8dp"
+        android:padding="12dp"
         android:clipToPadding="false"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintBottom_toTopOf="@id/inputBar"
@@ -41,40 +58,47 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- ================= INPUT BAR ================= -->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/inputBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:background="#F9F9F9"
-        android:elevation="8dp"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <EditText
-            android:id="@+id/input"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:hint="Message"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:textSize="14sp"
-            android:background="@drawable/bg_message"
-            android:inputType="textMultiLine"
-            android:maxLines="4"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="#FFFFFF">
 
-        <ImageButton
-            android:id="@+id/send"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_send"
-            android:contentDescription="Send"/>
+            <EditText
+                android:id="@+id/input"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:hint="Type announcement..."
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="14sp"
+                android:background="@drawable/bg_message"
+                android:inputType="textMultiLine"
+                android:maxLines="4"/>
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/send"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_send_circle"
+                android:src="@drawable/ic_send"
+                android:tint="@android:color/white"
+                android:contentDescription="Send"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
