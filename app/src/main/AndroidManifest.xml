@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +21,19 @@
         android:theme="@style/Theme.FinalYearProject"
         tools:targetApi="31">
         <activity
+            android:name=".AdminSideAttendancePage"
+            android:exported="false" />
+        <activity
+            android:name=".UserAttendanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ImagePreviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminSideManageStudent"
             android:exported="false" />
         <activity
             android:name=".AdminSideUpdateMenu"

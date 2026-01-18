@@ -19,9 +19,11 @@ import com.deepdefender.finalyearproject.ComplaintActivity;
 import com.deepdefender.finalyearproject.Login;
 import com.deepdefender.finalyearproject.MonthlyBillActivity;
 import com.deepdefender.finalyearproject.R;
+import com.deepdefender.finalyearproject.UserAttendanceActivity;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class StudentDashboardFragment extends Fragment {
 
@@ -35,7 +37,7 @@ public class StudentDashboardFragment extends Fragment {
     private TextView tabBreakfast, tabLunch, tabDinner;
 
     // Cards
-    private CardView cardMonthlyBill, cardSubmitComplaint;
+    private CardView cardMonthlyBill, cardSubmitComplaint,cardAttendance;
     private TextView txtBillDue;
 
     private ShapeableImageView imgProfile;
@@ -58,7 +60,8 @@ public class StudentDashboardFragment extends Fragment {
                 container,
                 false
         );
-
+        FirebaseMessaging.getInstance().subscribeToTopic("announcements")
+                .addOnCompleteListener(task -> {});
         bindViews(view);
         initFirebase();
         setupTabs();
@@ -91,6 +94,14 @@ public class StudentDashboardFragment extends Fragment {
 
         imgProfile = v.findViewById(R.id.imgProfile);
         btnLogout = v.findViewById(R.id.btnLogout);
+        cardAttendance=v.findViewById(R.id.cardAttendance);
+        cardAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), UserAttendanceActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // ================= FIREBASE =================

@@ -11,12 +11,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.deepdefender.finalyearproject.Fragment.AdminMessageFragment;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
-    CardView cardcomplaint,cardgeneratebills,cardupdatemenu,anncouncement;
+    CardView cardcomplaint,cardgeneratebills,cardupdatemenu,anncouncement,cardManageStudents,cardAttendance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,31 @@ public class AdminDashboardActivity extends AppCompatActivity {
         cardgeneratebills=findViewById(R.id.cardGenerateBills);
         cardupdatemenu=findViewById(R.id.cardUpdateMenu);
         anncouncement=findViewById(R.id.anncouncement);
-
+        cardManageStudents=findViewById(R.id.cardManageStudents);
+        cardAttendance=findViewById(R.id.cardAttendance);
+        cardAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdminDashboardActivity.this,AdminSideAttendancePage.class);
+                startActivity(intent);
+            }
+        });
+        cardManageStudents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdminDashboardActivity.this, AdminSideManageStudent.class);
+                startActivity(intent);
+            }
+        });
+        anncouncement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, new AdminMessageFragment())
+                        .commit();
+            }
+        });
 
         cardupdatemenu.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -14,7 +14,7 @@
         app:cardCornerRadius="24dp"
         android:layout_marginTop="200dp"
         app:cardElevation="10dp"
-        app:cardBackgroundColor="#6AB9FF"
+        app:cardBackgroundColor="#FC9411"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/appName"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +25,7 @@
             android:layout_height="180dp"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
+            android:padding="30dp"
             android:src="@drawable/mess_logo"
             app:tint="#FFFFFF" />
     </androidx.cardview.widget.CardView>
