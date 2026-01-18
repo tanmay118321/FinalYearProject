@@ -101,13 +101,19 @@ public class UserMenuFragment extends Fragment implements View.OnClickListener {
         selectedDay = days[index];
 
         for (int i = 0; i < dayViews.length; i++) {
-            dayViews[i].setBackgroundColor(
-                    i == index ? Color.parseColor("#00BCD4") : Color.WHITE
-            );
+            if (i == index) {
+                dayViews[i].setBackgroundResource(R.drawable.days_bg);
+            } else {
+                dayViews[i].setBackgroundResource(android.R.color.transparent);
+                // or use another drawable if you have a default one
+                // dayViews[i].setBackgroundResource(R.drawable.days_bg_default);
+            }
         }
 
         loadMenu(selectedDay);
     }
+
+
 
     private void loadMenu(String day) {
         dbRef.child(day).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -123,7 +129,7 @@ public class UserMenuFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled( DatabaseError error) { }
         });
     }
 
@@ -131,7 +137,7 @@ public class UserMenuFragment extends Fragment implements View.OnClickListener {
         String[] items = data.split("/");
         for (int i = 0; i < views.length; i++) {
             if (i < items.length) {
-                views[i].setText("• " + items[i].trim());
+                views[i].setText("" + items[i].trim());
                 views[i].setVisibility(View.VISIBLE);
             } else {
                 views[i].setVisibility(View.GONE);

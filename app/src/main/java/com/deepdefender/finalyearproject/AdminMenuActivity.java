@@ -77,11 +77,19 @@ public class AdminMenuActivity extends AppCompatActivity implements View.OnClick
 
         for (int i = 0; i < dayIds.length; i++) {
             TextView tv = findViewById(dayIds[i]);
-            tv.setBackgroundColor(i == index ? Color.parseColor("#00BCD4") : Color.WHITE);
+
+            if (i == index) {
+                tv.setBackgroundResource(R.drawable.days_bg);
+            } else {
+                tv.setBackgroundResource(android.R.color.transparent);
+                // or default background drawable
+                // tv.setBackgroundResource(R.drawable.days_bg_default);
+            }
         }
 
         loadMenu(selectedDay);
     }
+
 
     private void loadMenu(String day) {
         dbRef.child(day).addListenerForSingleValueEvent(new ValueEventListener() {
