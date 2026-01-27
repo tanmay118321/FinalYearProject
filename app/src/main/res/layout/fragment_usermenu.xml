@@ -25,37 +25,41 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
+            android:textColor="@color/black"
             android:background="@drawable/days_bg"
             android:text="Mon"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/dayTue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
+            android:textColor="@color/black"
             android:text="Tue"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/dayWed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
+            android:textColor="@color/black"
             android:text="Wed"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/dayThu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
+            android:textColor="@color/black"
             android:text="Thu"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/dayFri"
@@ -63,8 +67,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="10"
             android:text="Fri"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/daySat"
@@ -72,8 +77,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="10"
             android:text="Sat"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/daySun"
@@ -81,8 +87,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="10"
             android:text="Sun"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20dp" />
     </LinearLayout>
 
     <!-- Breakfast Card -->
@@ -109,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Breakfast"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -144,7 +151,7 @@
                 android:id="@+id/txtBreakfastTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:text="⏰ 7:30 AM - 9:30 AM"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -174,7 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lunch"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -205,7 +212,7 @@
                 android:id="@+id/txtLunchTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:text="⏰ 12:30 PM - 2:30 PM"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -235,7 +242,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dinner"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -266,7 +273,7 @@
                 android:id="@+id/txtDinnerTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:text="⏰ 8:00 PM - 10:00 PM"
                 android:textSize="12sp" />
         </LinearLayout>
